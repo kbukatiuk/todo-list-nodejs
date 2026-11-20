@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мій список справ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="todo-container">
+      <!-- Заголовок сайту -->
+      <header class="todo-header">
+        <h1>Мій список справ</h1>
+      </header>
+
+      <!-- Додавання нового завдання -->
+      <div class="input-container">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="Що потрібно зробити?"
+          maxlength="150"
+        />
+        <button id="addTaskButton">+ Додати</button>
+      </div>
+
+      <!-- Повідомлення про помилки -->
+      <p id="errorMessage" class="error-message" role="alert"></p>
+
+      <!-- Індикатор завантаження -->
+      <p id="loadingMessage" class="loading-message" role="status">
+        Завантаження завдань...
+      </p>
+
+      <!-- Лічильник та прогрес -->
+      <section class="progress-section">
+        <div class="progress-header">
+          <h2>Мій прогрес</h2>
+          <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <p id="taskCounter">Усього: 0 | Не виконано: 0</p>
+      </section>
+
+      <!-- Фільтри завдань -->
+      <div class="filters">
+        <button class="filter-button active" data-filter="all">Всі</button>
+
+        <button class="filter-button" data-filter="active">Активні</button>
+
+        <button class="filter-button" data-filter="completed">Виконані</button>
+      </div>
+
+      <!-- Список завдань -->
+      <ul id="taskList"></ul>
+
+      <!-- Нижня частина -->
+      <div class="todo-footer">
+        <button id="clearCompletedButton">Очистити виконані</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

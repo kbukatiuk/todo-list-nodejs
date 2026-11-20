@@ -1,0 +1,235 @@
+/* Практична №5: Royal Green, без корони */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 48px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: Arial, sans-serif;
+  color: #173f2b;
+  background: linear-gradient(135deg, #e8eddf, #f7f3e6);
+}
+.todo-container {
+  width: 100%;
+  max-width: 650px;
+  padding: 34px;
+  border-radius: 22px;
+  background: #175638;
+  box-shadow: 0 18px 45px rgba(17, 65, 42, 0.18);
+}
+.todo-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 21px;
+  border-bottom: 1px solid #d8c18a;
+}
+h1 {
+  margin: 0 0 11px;
+  font-size: 32px;
+  color: #e8d3a0;
+}
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+#taskInput {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #d9d5c1;
+  border-radius: 12px;
+  background: #f9f7ed;
+  color: #173f2b;
+  outline: none;
+}
+#taskInput:focus {
+  border-color: #d8c18a;
+  box-shadow: 0 0 0 3px rgba(216, 193, 138, 0.22);
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  transition: 0.18s;
+}
+button:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+#addTaskButton {
+  border: none;
+  padding: 0 20px;
+  border-radius: 24px;
+  background: #d8c18a;
+  color: #164b31;
+  font-size: 14px;
+  font-weight: bold;
+}
+.error-message {
+  display: none;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffeded;
+  color: #9d322e;
+}
+.loading-message {
+  display: none;
+  color: #f3e6bc;
+  text-align: center;
+  padding: 10px;
+}
+.progress-section {
+  padding: 19px;
+  margin: 21px 0;
+  background: #216344;
+  border-radius: 16px;
+}
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.progress-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #f5ead2;
+}
+#progressPercent {
+  color: #e8d3a0;
+  font-weight: bold;
+}
+.progress-bar {
+  height: 9px;
+  border-radius: 20px;
+  background: #47785b;
+  overflow: hidden;
+}
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 20px;
+  background: #d8c18a;
+  transition: width 0.25s;
+}
+#taskCounter {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #e0e9df;
+}
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.filter-button {
+  flex: 1;
+  padding: 10px 6px;
+  border: 1px solid #d8c18a;
+  border-radius: 25px;
+  background: transparent;
+  color: #e8d3a0;
+}
+.filter-button.active {
+  background: #d8c18a;
+  color: #164b31;
+  font-weight: bold;
+}
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px;
+  margin-bottom: 11px;
+  border-radius: 13px;
+  background: #f9f7ed;
+}
+.task-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  font-size: 14px;
+}
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #889589;
+}
+.complete-button,
+.delete-button {
+  padding: 9px 12px;
+  border-radius: 24px;
+  font-size: 12px;
+}
+.complete-button {
+  background: #e7eee3;
+  color: #205a3a;
+  border: 1px solid #9caf96;
+}
+.delete-button {
+  background: #fff5f2;
+  color: #a65c4f;
+  border: 1px solid #d4aba1;
+}
+.empty-message {
+  text-align: center;
+  color: #f1e5c7;
+  padding: 20px;
+}
+.todo-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 23px;
+  padding-top: 18px;
+  border-top: 1px solid #a8a778;
+}
+#clearCompletedButton {
+  border-radius: 22px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid #d8c18a;
+  color: #e8d3a0;
+}
+@media (max-width: 600px) {
+  body {
+    padding: 18px 10px;
+  }
+  .todo-container {
+    padding: 24px 16px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  .input-container {
+    flex-direction: column;
+  }
+  #addTaskButton {
+    padding: 12px;
+  }
+  .filters {
+    gap: 5px;
+  }
+  .filter-button {
+    font-size: 12px;
+  }
+  .task-item {
+    flex-wrap: wrap;
+  }
+  .task-text {
+    flex-basis: 100%;
+  }
+}
